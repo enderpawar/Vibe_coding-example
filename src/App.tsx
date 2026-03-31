@@ -9,21 +9,24 @@ function App() {
   const { isDark, toggleTheme } = useTheme();
 
   return (
-    <div className='min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex py-10 justify-center transition-colors'>
-      <div className='w-full max-w-2xl px-4 flex flex-col gap-6'>
-        <div className='flex items-center justify-between px-2'>
-          <h1 className='text-3xl font-bold'>생산성 Todo</h1>
+    <div className="min-h-screen bg-[#F4F5F5] dark:bg-[#0E0E0E] text-gray-900 dark:text-gray-100 flex flex-col items-center pb-32 font-sans transition-colors relative overflow-hidden">
+      {/* Subtle background glow effect */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gray-200/50 dark:bg-gray-900 rounded-full blur-[120px] -z-10 opacity-70"></div>
+      
+      <div className="w-full max-w-md px-6 pt-16 flex flex-col gap-6 relative z-10 min-h-screen">
+        <header className="flex items-start justify-between mb-2">
+          <div>
+            <h1 className="text-[26px] font-bold tracking-tight">Hey, User 👊</h1>
+            <p className="text-[#888] dark:text-gray-400 font-serif italic mt-1 text-[17px]">Let's make progress today!</p>
+          </div>
           <button
             onClick={toggleTheme}
-            className='p-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors'
-            title='테마 전환'
+            className="w-12 h-12 rounded-[18px] bg-white dark:bg-[#1a1a1a] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-gray-100/50 dark:border-gray-800 flex items-center justify-center hover:scale-105 transition-transform"
           >
-            {isDark ? '🌙' : '☀️'}
+            <span className="text-xl">{isDark ? '☀️' : '🌙'}</span>
           </button>
-        </div>
-
-        <TodoForm onAddTodo={addTodo} />
-
+        </header>
+        
         <FilterBar filter={filter} onFilterChange={setFilter} />
 
         <TodoList
@@ -33,6 +36,10 @@ function App() {
           onToggleComplete={toggleComplete}
           onReorder={reorderTodos}
         />
+
+        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center">
+            <TodoForm onAddTodo={addTodo} />
+        </div>
       </div>
     </div>
   );

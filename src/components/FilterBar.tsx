@@ -1,4 +1,4 @@
-import type { Filter, Priority, Category } from '../types/todo';
+import type { Filter } from '../types/todo';
 
 interface FilterBarProps {
   filter: Filter;
@@ -6,47 +6,32 @@ interface FilterBarProps {
 }
 
 export function FilterBar({ filter, onFilterChange }: FilterBarProps) {
+  const status = filter.completed === undefined ? 'all' : filter.completed ? 'completed' : 'pending';
+
+  const setStatus = (s: 'all' | 'completed' | 'pending') => {
+    onFilterChange({ ...filter, completed: s === 'all' ? undefined : s === 'completed' });
+  };
+
   return (
-    <div className="flex flex-wrap gap-3 bg-white dark:bg-gray-800 p-4 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none border border-transparent dark:border-gray-700">
-      <input
-        type="text"
-        placeholder="검색..."
-        value={filter.search || ''}
-        onChange={(e) => onFilterChange({ ...filter, search: e.target.value })}
-        className="flex-1 min-w-[120px] rounded-full border border-gray-200 dark:border-gray-600 px-4 py-2 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-      <select
-        value={filter.priority || ''}
-        onChange={(e) => onFilterChange({ ...filter, priority: e.target.value as Priority || undefined })}
-        className="rounded-full border border-gray-200 dark:border-gray-600 px-4 py-2 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    <div className="flex bg-white dark:bg-[#1a1a1a] p-1.5 rounded-full shadow-sm w-full mx-auto justify-between border border-gray-100 dark:border-gray-800">
+      <button 
+        onClick={() => setStatus('all')}
+        className={"flex-1 py-3 rounded-full text-sm font-semibold tracking-wide transition-all " + (status === 'all' ? 'bg-[#121212] text-white dark:bg-white dark:text-black shadow-md' : 'text-gray-400 hover:text-gray-900 dark:hover:text-gray-200')}
       >
-        <option value="">모든 우선순위</option>
-        <option value="높음">🔴 높음</option>
-        <option value="중간">🟡 중간</option>
-        <option value="낮음">🔵 낮음</option>
-      </select>
-      <select
-        value={filter.category || ''}
-        onChange={(e) => onFilterChange({ ...filter, category: e.target.value as Category || undefined })}
-        className="rounded-full border border-gray-200 dark:border-gray-600 px-4 py-2 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        To do
+      </button>
+      <button 
+        onClick={() => setStatus('completed')}
+        className={"flex-1 py-3 rounded-full text-sm font-semibold tracking-wide transition-all gap-1.5 flex items-center justify-center " + (status === 'completed' ? 'bg-[#121212] text-white dark:bg-white dark:text-black shadow-md' : 'text-gray-400 hover:text-gray-900 dark:hover:text-gray-200')}
       >
-        <option value="">모든 카테고리</option>
-        <option value="업무">💼 업무</option>
-        <option value="개인">🏠 개인</option>
-        <option value="공부">📚 공부</option>
-      </select>
-      <select
-        value={filter.completed?.toString() || ''}
-        onChange={(e) => {
-          const val = e.target.value;
-          onFilterChange({ ...filter, completed: val === '' ? undefined : val === 'true' });
-        }}
-        className="rounded-full border border-gray-200 dark:border-gray-600 px-4 py-2 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        Completed
+      </button>
+      <button 
+        onClick={() => setStatus('pending')}
+        className={"flex-1 py-3 rounded-full text-sm font-semibold tracking-wide transition-all gap-1.5 flex items-center justify-center " + (status === 'pending' ? 'bg-[#121212] text-white dark:bg-white dark:text-black shadow-md' : 'text-gray-400 hover:text-gray-900 dark:hover:text-gray-200')}
       >
-        <option value="">모든 상태</option>
-        <option value="false">진행중</option>
-        <option value="true">완료됨</option>
-      </select>
+        Pending
+      </button>
     </div>
   );
 }
