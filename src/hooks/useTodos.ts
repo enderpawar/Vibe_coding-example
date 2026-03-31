@@ -51,8 +51,10 @@ export function useTodos() {
   });
 
   const sortedTodos = [...filteredTodos].sort((a, b) => a.order - b.order);
+  const allTodos = [...todos].sort((a, b) => a.order - b.order);
 
   return {
+    allTodos,
     todos: sortedTodos,
     filter,
     setFilter,

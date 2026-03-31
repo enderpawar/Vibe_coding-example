@@ -22,23 +22,29 @@ export function TodoList({ todos, onUpdate, onDelete, onToggleComplete, onReorde
 
   if (todos.length === 0) {
     return (
-      <div className="bg-white dark:bg-[#1a1a1a] rounded-[32px] p-10 text-center shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-none border border-gray-100 dark:border-gray-800 mt-2">
-        <div className="text-4xl mb-4">✨</div>
-        <h3 className="font-bold text-lg mb-1">You're all caught up!</h3>
-        <p className="text-gray-400 text-sm">Add a new task to get started.</p>
+      <div className="hairline-card animate-reveal mt-1 rounded-[34px] px-8 py-14 text-center stagger-3">
+        <p className="eyebrow-label">Zero State</p>
+        <h3 className="headline-serif mt-5 text-5xl leading-none sm:text-6xl">Silence looks good here.</h3>
+        <p className="mx-auto mt-5 max-w-md text-sm leading-7 text-black/58 dark:text-white/58">
+          There are no visible tasks in this view. Add something new or switch the filter to bring the board back to
+          life.
+        </p>
+        <div className="mx-auto mt-8 h-px w-32 animate-pulseLine bg-black/70 dark:bg-white/70" />
       </div>
     );
   }
   
   return (
-    <div className="bg-white dark:bg-[#1a1a1a] rounded-[32px] p-6 pb-4 pt-6 shadow-[0_8px_40px_rgba(0,0,0,0.04)] dark:shadow-none border border-gray-100 dark:border-gray-800/60 min-h-[200px] mt-2">
+    <div className="hairline-card relative min-h-[260px] overflow-hidden rounded-[34px] p-4 sm:p-5">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/70 to-transparent dark:from-white/[0.04]" />
       <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         <SortableContext items={todos.map((t) => t.id)} strategy={verticalListSortingStrategy}>
-          <div className="flex flex-col">
-            {todos.map((todo) => (
+          <div className="relative flex flex-col">
+            {todos.map((todo, index) => (
               <TodoItem
                 key={todo.id}
                 todo={todo}
+                index={index}
                 onUpdate={onUpdate}
                 onDelete={onDelete}
                 onToggleComplete={onToggleComplete}

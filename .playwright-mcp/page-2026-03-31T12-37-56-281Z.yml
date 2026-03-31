@@ -1,0 +1,67 @@
+- generic [ref=e4]:
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic [ref=e8]:
+          - paragraph [ref=e9]: Monochrome Task System
+          - paragraph [ref=e10]: March 31, 2026
+        - button "Toggle color theme" [ref=e11] [cursor=pointer]:
+          - generic [ref=e13]: NOIR
+      - generic [ref=e14]:
+        - generic [ref=e15]: Editorial Minimalism
+        - heading "Make your list look legendary." [level=1] [ref=e17]:
+          - text: Make your
+          - text: list look
+          - text: legendary.
+        - paragraph [ref=e18]: A stark black-and-white workspace with magazine-grade spacing, deliberate motion, and a task flow that feels more like a designed object than a utility.
+      - generic [ref=e19]:
+        - article [ref=e20]:
+          - paragraph [ref=e21]: Completion
+          - generic [ref=e22]:
+            - generic [ref=e23]: "0"
+            - generic [ref=e24]: "%"
+        - article [ref=e26]:
+          - paragraph [ref=e27]: Open Focus
+          - generic [ref=e28]:
+            - generic [ref=e29]: "0"
+            - generic [ref=e30]: items
+          - paragraph [ref=e31]: Everything is cleared.
+        - article [ref=e32]:
+          - paragraph [ref=e33]: Current View
+          - paragraph [ref=e34]: All tasks in focus
+          - paragraph [ref=e35]: Double click to edit, tap the edge to complete, drag the row to reorder.
+    - generic [ref=e36]:
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - paragraph [ref=e40]: Task Ledger
+          - heading "Curated for momentum." [level=2] [ref=e41]
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e44]: All
+            - generic [ref=e45]: "0"
+          - generic [ref=e46]:
+            - generic [ref=e47]: Done
+            - generic [ref=e48]: "0"
+          - generic [ref=e49]:
+            - generic [ref=e50]: Live
+            - generic [ref=e51]: "0"
+      - generic [ref=e53]:
+        - button "All 0" [ref=e54] [cursor=pointer]:
+          - generic [ref=e55]: All
+          - generic [ref=e56]: "0"
+        - button "Done 0" [ref=e57] [cursor=pointer]:
+          - generic [ref=e58]: Done
+          - generic [ref=e59]: "0"
+        - button "Live 0" [ref=e60] [cursor=pointer]:
+          - generic [ref=e61]: Live
+          - generic [ref=e62]: "0"
+      - generic [ref=e63]:
+        - paragraph [ref=e64]: Zero State
+        - heading "Silence looks good here." [level=3] [ref=e65]
+        - paragraph [ref=e66]: There are no visible tasks in this view. Add something new or switch the filter to bring the board back to life.
+  - generic [ref=e69]:
+    - generic [ref=e70]:
+      - paragraph [ref=e71]: New Entry
+      - paragraph [ref=e72]: Shape the next move.
+    - button "Open task composer" [ref=e73] [cursor=pointer]:
+      - img [ref=e75]
