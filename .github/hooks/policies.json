@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "command": "node ./.github/hooks/scripts/validate-build.js",
+        "timeout": 120
+      }
+    ],
+    "PreToolUse": [
+      {
+        "type": "command",
+        "command": "node ./.github/hooks/scripts/check-command.js",
+        "timeout": 5
+      }
+    ]
+  }
+}
