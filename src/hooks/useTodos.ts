@@ -1,18 +1,32 @@
 import { useState } from 'react';
-import { Todo, Filter } from '../types/todo';
+import type { Todo, Filter } from '../types/todo';
 
 export function useTodos() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [filter, setFilter] = useState<Filter>({});
 
   // CRUD 함수 시그니처 (Phase 3에서 구현)
-  const addTodo = (todo: Omit<Todo, 'id' | 'createdAt' | 'updatedAt' | 'order'>) => {};
-  const updateTodo = (id: string, updates: Partial<Todo>) => {};
-  const deleteTodo = (id: string) => {};
-  const toggleComplete = (id: string) => {};
+  const addTodo = (todo: Omit<Todo, 'id' | 'createdAt' | 'updatedAt' | 'order'>) => {
+    setTodos((prev) => [...prev, todo as Todo]);
+  };
+  const updateTodo = (id: string, updates: Partial<Todo>) => {
+    setTodos((prev) => prev.map((t) => (t.id === id ? { ...t, ...updates } : t)));
+  };
+  const deleteTodo = (id: string) => {
+    setTodos((prev) => prev.filter((t) => t.id !== id));
+  };
+  const toggleComplete = (id: string) => {
+    setTodos((prev) => prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t)));
+  };
 
   // 정렬 함수 시그니처 (Phase 6에서 구현)
-  const reorderTodos = (activeId: string, overId: string) => {};
+  const reorderTodos = (activeId: string, overId: string) => {
+    setTodos((prev) => {
+      // reorder logic (placeholder)
+      if (activeId === overId) return prev;
+      return prev;
+    });
+  };
 
   // 필터 적용 (Phase 5에서 확장)
   const filteredTodos = todos.filter((todo) => {
