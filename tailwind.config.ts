@@ -2,35 +2,39 @@ import type { Config } from 'tailwindcss'
 
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: 'class',
   theme: {
     extend: {
-      colors: {
-        background: {
-          light: '#f9fafb', // gray-50
-          dark: '#111827',  // gray-900
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Georgia', 'ui-serif', 'serif'],
+      },
+      keyframes: {
+        popUp: {
+          '0%': {
+            opacity: '0', transform: 'translateY(15px) scale(0.97)'
+          }, 
+          '100%': {
+            opacity: '1', transform: 'translateY(0) scale(1)'
+          }
         },
-        surface: {
-          light: '#ffffff', // white
-          dark: '#1f2937',  // gray-800
-        },
-        text: {
-          light: '#111827', // gray-900
-          dark: '#f9fafb',  // gray-50
+        fadeInUp: {
+          '0%': {
+            opacity: '0', transform: 'translateY(15px)'
+          },
+          '100%': {
+            opacity: '1', transform: 'translateY(0)'
+          }
         }
       },
-      borderRadius: {
-        '3xl': '32px',
-      },
-      boxShadow: {
-        'soft': '0 8px 30px rgb(0,0,0,0.04)',
-        'soft-dark': '0 8px 30px rgb(0,0,0,0.2)',
+      animation: {
+        popUp: 'popUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        fadeInUp: 'fadeInUp 0.3s ease-out forwards',
       }
     },
   },
   plugins: [],
 } satisfies Config
-
